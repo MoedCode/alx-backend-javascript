@@ -8,19 +8,19 @@ export default class Airport {
     return this._name;
   }
 
-  set name(newName) {
-    this._name = newName;
+  set name(value) {
+    this._name = value;
   }
 
   get code() {
     return this._code;
   }
 
-  set code(newCode) {
-    this._code = newCode;
+  set code(value) {
+    this._code = value;
   }
 
-  toString() {
-    return `[object ${this._code}]`;
+  get [Symbol.toStringTag]() {
+    return this._code;
   }
 }

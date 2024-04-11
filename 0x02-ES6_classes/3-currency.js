@@ -4,23 +4,27 @@ export default class Currency {
     this.name = name;
   }
 
-  displayFullCurrency() {
-    return `${this._name} (${this._code})`;
-  }
-
   get code() {
     return this._code;
   }
 
-  set code(newCode) {
-    this._code = newCode;
+  set code(value) {
+    this._code = value;
   }
 
   get name() {
     return this._name;
   }
 
-  set name(newName) {
-    this._name = newName;
+  set name(value) {
+    this._name = value;
+  }
+
+  /**
+   * Creates the full string representation of this Currency.
+   * @returns {String}
+   */
+  displayFullCurrency() {
+    return `${this.name} (${this.code})`;
   }
 }
