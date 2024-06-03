@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const displayMessage = console.log
-export default displayMessage
+module.exports =  displayMessage
 if (require.main === module ){
     displayMessage("Hello NodeJS!");
 }
