@@ -3,6 +3,7 @@
     "lint": "eslint --fix \"*.js\"",
     "check-lint": "lint [0-9]*.js",
     "dev": "npx babel-node",
+
     "test": "jest",
     "full-test": "./node_modules/.bin/eslint [0-9]*.js && jest"
   },
