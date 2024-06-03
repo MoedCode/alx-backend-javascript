@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const { argv } = require('process');
 
-function countStudents(path, stream) {
+function countStudents (path, stream) {
   if (fs.existsSync(path)) {
     const data = fs.readFileSync(path, 'utf8');
     const result = [];
