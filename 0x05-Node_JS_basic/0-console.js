@@ -1,3 +1,6 @@
-const displayMessage = (str) => console.log(str);
-
-module.exports = displayMessage;
+#!/usr/bin/env node
+const displayMessage = console.log
+module.exports =  displayMessage
+if (require.main === module ){
+    displayMessage("Hello NodeJS!");
+}
