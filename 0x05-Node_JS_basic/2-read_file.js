@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-// const { error } = require('console');
+const { error } = require('console');
+
+// .isFile(
 const fs = require('fs');
 
 function countStudents (filePath) {
@@ -55,5 +57,6 @@ function arr_to_string (arr = []) {
   }
   return str;
 }
-
 module.exports = countStudents;
+
+if (require.main === module) { countStudents(process.argv[2]); }
