@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 const fs = require('fs');
 
-const countStudents = (dataPath) => {
-  if (!fs.existsSync(dataPath)) {
+const countStudents = (file_path) => {
+  if (!fs.existsSync(file_path)) {
     throw new Error('Cannot load the database');
   }
-  if (!fs.statSync(dataPath).isFile()) {
+  if (!fs.statSync(file_path).isFile()) {
     throw new Error('Cannot load the database');
   }
   const fileLines = fs
-    .readFileSync(dataPath, 'utf-8')
+    .readFileSync(file_path, 'utf-8')
     .toString('utf-8')
     .trim()
     .split('\n');
