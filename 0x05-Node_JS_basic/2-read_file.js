@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import fs from 'fs';
+// const { error } = require('console');
+const fs = require('fs');
 
 function countStudents (filePath) {
   if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
@@ -7,51 +8,52 @@ function countStudents (filePath) {
   }
   const data = fs.readFileSync(filePath, 'utf-8');
 
-  const allObjects = ORM(data);
-  const NUMBER_OF_STUDENTS = Object.keys(allObjects).length;
+  allObjects = ORM(data);
+  NUMBER_OF_STUDENTS = Object.keys(allObjects).length;
 
-  console.log(`Number of students: ${NUMBER_OF_STUDENTS}`);
-  const all_cs = get_by(allObjects, 'field', 'CS', 'firstname');
-  const all_SWE = get_by(allObjects, 'field', 'SWE', 'firstname');
+  console.log(`Number of students: ${NUMBER_OF_STUDENTS} `);
+  all_cs = get_by(allObjects, 'field', 'CS', 'firstname');
+  all_SWE = get_by(allObjects, 'field', 'SWE', 'firstname');
   console.log(`Number of students in CS: ${all_cs.length}. List: ${arr_to_string(all_cs)}`);
   console.log(`Number of students in SWE: ${all_SWE.length}. List: ${arr_to_string(all_SWE)}`);
 }
 
 function ORM (data) {
-  const allObjects = [];
-  const lines = data.trim().split('\n');
-  const clmNmaes = lines[0].split(',');
+  allObjects = [];
+  lines = data.trim().split('\n');
+  clmNmaes = lines[0].split(',');
 
   for (let i = 1; i < lines.length; i++) {
-    const values = lines[i].split(',');
-    const obj = {};
+    values = lines[i].split(',');
+    allObjects[i] = {};
     for (let j = 0; j < values.length; j++) {
-      obj[clmNmaes[j]] = values[j];
+      allObjects[i][clmNmaes[j]] = values[j];
     }
-    allObjects.push(obj);
   }
 
   return allObjects;
 }
-
 function get_by (data, key, value, filter_key = null) {
-  const query_objects = [];
+  query_objects = [];
   for (const obj of data) {
     if (obj) {
       if (obj[key] === value) {
-        if (!filter_key) {
-          query_objects.push(obj);
-        } else {
-          query_objects.push(obj[filter_key]);
-        }
+        if (!filter_key) { query_objects.push(obj); }
+        query_objects.push(obj[filter_key]);
       }
     }
   }
   return query_objects;
 }
-
 function arr_to_string (arr = []) {
-  return arr.join(', ');
+  str = '';
+  x = 0;
+  for (const Idx of arr) {
+    if (x) { str += ', '; }
+    str += Idx;
+    x = 1;
+  }
+  return str;
 }
 
-countStudents(process.argv[2]);
+module.exports = countStudents;
