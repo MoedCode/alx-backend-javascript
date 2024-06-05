@@ -1,0 +1,16 @@
+Promise {
+  <rejected> TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+      at Object.readFile (fs.js:343:10)
+      at /mnt/c/Users/Active/Desktop/Coding/Short_Specializations/alx-backend-javascript/0x05-Node_JS_basic/3-read_file_async.js:6:8
+      at new Promise (<anonymous>)
+      at countStudents (/mnt/c/Users/Active/Desktop/Coding/Short_Specializations/alx-backend-javascript/0x05-Node_JS_basic/3-read_file_async.js:4:37)
+      at Object.<anonymous> (/mnt/c/Users/Active/Desktop/Coding/Short_Specializations/alx-backend-javascript/0x05-Node_JS_basic/3-read_file_async.js:13:13)
+      at Module._compile (internal/modules/cjs/loader.js:1114:14)
+      at Object.Module._extensions..js (internal/modules/cjs/loader.js:1143:10)
+      at Module.load (internal/modules/cjs/loader.js:979:32)
+      at Function.Module._load (internal/modules/cjs/loader.js:819:12)
+      at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:75:12) {
+    code: 'ERR_INVALID_ARG_TYPE'
+  }
+}
+true
