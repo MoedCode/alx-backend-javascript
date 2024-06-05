@@ -15,7 +15,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
       const studentGroups = {};
       const columnNames = TokenizeLines[0].split(',');
       const columnNames2 = columnNames.slice(0, columnNames.length - 1);
-        console.log(columnNames2);
+      console.log(columnNames2);
       // Iterate over each line in the file (excluding the columnNames)
       for (const line of TokenizeLines.slice(1)) {
         const lineValues = line.split(',');
@@ -50,4 +50,4 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
 });
 
 module.exports = countStudents;
-countStudents("nope.csv")
+countStudents('nope.csv');
