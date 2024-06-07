@@ -60,3 +60,4 @@ function arr_to_string (arr = []) {
 module.exports = countStudents;
 
 if (require.main === module) { countStudents(process.argv[2]); }
+d
