@@ -1,5 +1,3 @@
-function calculateNumber(a, b){
-    return Math.round(a) + Math.round(b);
-}
+#!/usr/bin/env node
 
-module.exports = calculateNumber;
+module.exports = calculateNumber = (a, b) => Math.round(a) + Math.round(b);

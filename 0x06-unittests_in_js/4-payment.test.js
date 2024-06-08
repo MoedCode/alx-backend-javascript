@@ -1,19 +1,20 @@
-const { expect } = require('chai');
-const { it, describe } = require('mocha');
 const sinon = require('sinon');
+const Utils = require('./utils');
+const { expect } = require('chai');
+const sendPaymentRequestToApi = require('./4-payment');
 
-const Utils = require('./utils.js');
-const sendPaymentRequestToApi = require('./4-payment.js');
+describe('sendPaymentRequestToApi', () => {
+  it('sendPaymentRequestToApi calls console.log with the right arguments', () => {
+    const bigBrother = sinon.spy(console);
+    const dummy = sinon.stub(Utils, 'calculateNumber');
 
-describe('', () => {
-  const checkSoy = sinon.spy(console, 'log');
-  it('checking if numbers round with spies and stubs', () => {
+    dummy.returns(10);
     sendPaymentRequestToApi(100, 20);
-    const stubBoy = sinon.stub(Utils, 'calculateNumber');
-    stubBoy.withArgs('SUM', 100, 20).returns(120);
-    expect(checkSoy.calledOnce).to.be.true;
-    expect(console.log('The total is: 120')).to.be.all;
-    checkSoy.restore();
-    stubBoy.restore();
+    expect(dummy.calledWith('SUM', 100, 20)).to.be.true;
+    expect(dummy.callCount).to.be.equal(1);
+    expect(bigBrother.log.calledWith('The total is: 10')).to.be.true;
+    expect(bigBrother.log.callCount).to.be.equal(1);
+    dummy.restore();
+    bigBrother.log.restore();
   });
 });
